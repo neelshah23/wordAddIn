@@ -10,8 +10,8 @@ const Login = require('./login.html');
 })
 export class LoginComponent {
     user: any = {
-        email: 'dd0t12531@techmahindra.com',
-        password: 'DD$0T12531'
+        email: 'BV0T12536@techmahindra.com',
+        password: 'BV$0T12536'
     };
     constructor(private api: ApiCallService, private router: Router){}
 
@@ -20,12 +20,12 @@ export class LoginComponent {
             email: this.user.email,
             password: this.encrypt(this.user.password)
         };
-        this.api.callPostApi('https://ms-shared-nad.techmahindra.com/000000000032856-nad-rbac-microservice-dev/Login', user).subscribe(res => {
-            console.log(res);
+        this.api.callPostApi('https://ms-shared-nad.techmahindra.com/000000000032856-nad-rbac-microservice-development/login', user).subscribe(res => {
             localStorage.setItem('_u', JSON.stringify(res));
+            this.router.navigateByUrl('/home');
+
 
         });
-        this.router.navigateByUrl('/home');
 
 
     }

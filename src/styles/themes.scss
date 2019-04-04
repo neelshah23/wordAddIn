@@ -1,0 +1,592 @@
+/* You can add global custom themes to this file, and also import other style files */
+// ********** CUSTOM THEME START ***********//
+@import '~@angular/material/theming';
+@include mat-core();
+// include all the app related scss variables
+@import './variables';
+// color palette
+$nad-primary : ( 50: $nad-color-primary-dark, 100: $nad-color-primary-dark, 200: $nad-color-primary-dark, 300: $nad-color-primary-dark, 400: $nad-color-primary-dark, 500: $nad-color-primary-dark, 600: $nad-color-primary-dark, 700: $nad-color-primary-dark, 800: $nad-color-primary-dark, 900: $nad-color-primary-dark, A100: $nad-color-primary-light, A200: $nad-color-primary-light, A400: $nad-color-primary-light, A700: $nad-color-primary-light, contrast: ( 50: $nad-color-primary-dark, 100: $nad-color-primary-dark, 200: $nad-color-primary-dark, 300: $nad-color-primary-dark, 400: $nad-color-primary-dark, 500: $nad-color-primary-dark, 600: $nad-color-primary-dark, 700: $nad-color-primary-dark, 800: $nad-color-primary-dark, 900: $nad-color-primary-dark, A100: $nad-color-primary-light, A200: $nad-color-primary-light, A400: $nad-color-primary-light, A700: $nad-color-primary-light, ));
+$nad-accent: ( 50: $nad-color-accent-dark, 100: $nad-color-accent-dark, 200: $nad-color-accent-dark, 300: $nad-color-accent-dark, 400: $nad-color-accent-dark, 500: $nad-color-accent-dark, 600: $nad-color-accent-dark, 700: $nad-color-accent-dark, 800: $nad-color-accent-dark, 900: $nad-color-accent-dark, A100: $nad-color-accent-light, A200: $nad-color-accent-light, A400: $nad-color-accent-light, A700: $nad-color-accent-light, contrast: ( 50: $nad-color-accent-dark, 100: $nad-color-accent-dark, 200: $nad-color-accent-dark, 300: $nad-color-accent-dark, 400: $nad-color-accent-dark, 500: $nad-color-accent-dark, 600: $nad-color-accent-dark, 700: $nad-color-accent-dark, 800: $nad-color-accent-dark, 900: $nad-color-accent-dark, A100: $nad-color-accent-light, A200: $nad-color-accent-light, A400: $nad-color-accent-light, A700: $nad-color-accent-light, ));
+$nad-warn: ( 50: $nad-color-primary-dark, 100: $nad-color-primary-dark, 200: $nad-color-primary-dark, 300: $nad-color-primary-dark, 400: $nad-color-primary-dark, 500: $nad-color-primary-dark, 600: $nad-color-primary-dark, 700: $nad-color-primary-dark, 800: $nad-color-primary-dark, 900: $nad-color-primary-dark, A100: $nad-color-primary-light, A200: $nad-color-primary-light, A400: $nad-color-primary-light, A700: $nad-color-primary-light, contrast: ( 50: $nad-color-primary-dark, 100: $nad-color-primary-dark, 200: $nad-color-primary-dark, 300: $nad-color-primary-dark, 400: $nad-color-primary-dark, 500: $nad-color-primary-dark, 600: $nad-color-primary-dark, 700: $nad-color-primary-dark, 800: $nad-color-primary-dark, 900: $nad-color-primary-dark, A100: $nad-color-primary-light, A200: $nad-color-primary-light, A400: $nad-color-primary-light, A700: $nad-color-primary-light, ));
+// creating palette for application color grid
+$nad-app-primary: mat-palette($nad-primary);
+$nad-app-accent : mat-palette($nad-accent);
+// The warn palette is optional (defaults to red).
+$nad-app-warn : mat-palette($nad-warn);
+// Create the theme object (a Sass map containing all of the palettes).
+$nad-app-theme: mat-light-theme($nad-app-primary, $nad-app-accent, $nad-app-warn);
+// setting application theme
+@include angular-material-theme($nad-app-theme);
+$primary: map-get($nad-app-theme, primary);
+//@include mat-core-theme($primary);
+.md2-datepicker-header,
+.md2-calendar-header,
+.md2-clock-cell.md2-clock-cell-selected,
+.md2-calendar-body-selected {
+  background: mat-color($primary) !important;
+}
+
+.md2-button,
+.md2-calendar-year.selected,
+md2-datepicker:focus:not(.md2-datepicker-disabled) .md2-datepicker-arrow {
+  color: mat-color($primary) !important;
+}
+
+md2-datepicker:focus:not(.md2-calander-disabled) .md2-calander-input,
+.md2-calendar-body-today:not(.md2-calendar-body-selected) {
+  color: mat-color($primary) !important;
+  border-color: mat-color($primary) !important;
+}
+
+.md2-calendar-day.selected {
+  background: mat-color($primary) !important;
+}
+
+.md2-clock-center,
+.md2-clock-hand,
+.md2-clock-hand::before,
+.md2-clock-hour.active,
+.md2-clock-minute.active {
+  background: mat-color($primary) !important;
+}
+
+
+// ********** CUSTOM THEME END ***********//
+// ********** CUSTOM THEME STYLES START ***********//
+// font styles
+.text12 {
+  font-size: 12px;
+}
+
+.text13 {
+  font-size: 13px;
+}
+
+.text14 {
+  font-size: 14px;
+}
+
+.text15 {
+  font-size: 15px;
+}
+
+.text16 {
+  font-size: 16px;
+}
+
+.text17 {
+  font-size: 17px;
+}
+
+.text18 {
+  font-size: 18px;
+}
+
+.text19 {
+  font-size: 19px;
+}
+
+.text20 {
+  font-size: 20px;
+}
+
+.text22 {
+  font-size: 22px;
+}
+
+.text23 {
+  font-size: 23px;
+}
+
+.text24 {
+  font-size: 24px;
+}
+
+.text25 {
+  font-size: 25px;
+}
+
+.text26 {
+  font-size: 26px;
+}
+
+.text30 {
+  font-size: 30px;
+}
+
+.text35 {
+  font-size: 35px;
+}
+
+.text48 {
+  font-size: 48px;
+}
+
+.text50 {
+  font-size: 50px;
+}
+
+.text62 {
+  font-size: 62px;
+}
+
+.text55 {
+  font-size: 55px;
+}
+
+.colorAnalytic1 {
+  color: #50B08D;
+}
+
+.colorAnalytic2 {
+  color: #F8941D;
+}
+
+.colorAnalytic3 {
+  color: #509EDD;
+}
+
+.colorAnalytic4 {
+  color: #4C4C4C;
+}
+
+.colorAnalytic5 {
+  color: #B3689E;
+}
+
+
+
+.truncateText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pointer {
+  cursor: pointer
+}
+
+.primaryColorRed {
+  color: $nad-color-primary-dark
+}
+
+.primaryColorGreen {
+  color: $nad-color-accent-dark
+}
+
+.secondaryColorBlackDark {
+  color: $nad-color-text-bold-dark;
+}
+
+.secondaryColorBlackLight {
+  color: $nad-color-text-bold-light;
+}
+
+.secondaryNormalColorGreydark {
+  color: $nad-color-text-normal-dark;
+}
+
+.secondaryNormalColorGreyLight {
+  color: $nad-color-text-normal-light;
+}
+
+.primaryColorBlackDark {
+  color: $nad-color-text-bold-dark;
+}
+
+.primaryColorBlackLight {
+  color: $nad-color-text-bold-light;
+}
+
+.margin20 {
+  margin: 20px 0;
+}
+
+.bgPrimary {
+  background-color: $nad-color-primary-dark;
+}
+
+.bgAccent {
+  background-color: $nad-color-accent-dark;
+}
+
+.bgLightGrey {
+  background-color: $nad-grey-background-color;
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+.font12 {
+  font-size: 12px;
+}
+
+.font14 {
+  font-size: 14px;
+}
+
+.font16 {
+  font-size: 16px;
+}
+
+.font18 {
+  font-size: 18px;
+}
+
+.font20 {
+  font-size: 20px;
+}
+
+.font22 {
+  font-size: 22px;
+}
+
+.font24 {
+  font-size: 24px;
+}
+
+.textEllipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.thinFont {
+  font-family: RobotoThin, sans-serif;
+  font-weight: 300
+}
+
+.lightFont {
+  font-family: RobotoLight, sans-serif;
+  font-weight: 300
+}
+
+.normalFont {
+  font-family: RobotoRegular, sans-serif;
+  font-weight: 400
+}
+
+.thickFont {
+  font-family: RobotoBold, sans-serif;
+  font-weight: 600
+}
+
+.boldFont {
+  font-family: RobotoBold, sans-serif;
+  font-weight: 700
+}
+
+.align-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+//font size
+// text colors
+.colorLightGrey {
+  color: $nad-color-text-normal-dark;
+}
+
+.colorGrey {
+  color: $nad-color-text-bold-light;
+}
+
+.colorDarkGrey {
+  color: $nad-color-text-bold-dark;
+}
+
+.colorPrimary {
+  color: $nad-color-primary-dark;
+}
+
+.colorLightRed {
+  color: #ff6363;
+}
+
+.colorMediumGrey {
+  color: $nad-table-header-text-color;
+}
+
+// layout styles
+.width100 {
+  width: 100%;
+}
+
+.height100 {
+  height: 100%;
+}
+
+// padding styles
+.paddingZero {
+  padding: 0;
+}
+
+.padding25 {
+  padding: 25px;
+}
+
+// margin styles
+.marginZero {
+  margin: 0;
+}
+
+.marginRight30 {
+  margin-right: 30px;
+}
+
+.marginTop30 {
+  margin-top: 30px;
+}
+
+.marginTop20 {
+  margin-top: 20px;
+}
+
+.marginbottom20 {
+  margin-bottom: 20px;
+}
+
+.marginBottom50 {
+  margin-bottom: 50px;
+}
+
+// display styles
+.inlineBlock {
+  display: inline-block;
+}
+
+.block {
+  display: block !important;
+}
+
+.alignVerticalMiddle {
+  vertical-align: middle;
+}
+
+.alignVerticalTop {
+  vertical-align: top;
+}
+
+// accessibility styles
+.pointerIcon {
+  cursor: pointer;
+}
+
+// positional styles
+.positionRelative {
+  position: relative;
+}
+
+.positionCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.whiteLink {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: $nad-color-primary-dark;
+  }
+
+  &:active {
+    text-decoration: none;
+    color: $nad-color-primary-dark;
+  }
+}
+.mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary{
+  color: white;
+}
+// ********** CUSTOM THEME STYLES END ***********//
+// ********* NAD Standard classes **********//
+.NADHeader {
+  font-size: 22px;
+  line-height: 22px;
+  text-transform: uppercase;
+  font-family: RobotoBold, sans-serif;
+  color: $nad-color-text-bold-dark;
+}
+
+.NADSubHeader {
+  font-size: 20px;
+  line-height: 24px;
+  font-family: RobotoBold, sans-serif;
+  color: $nad-color-text-bold-dark;
+}
+
+.NADDescription {
+  font-size: 16px;
+  font-family: RobotoLight, sans-serif;
+  color: $nad-color-text-bold-light;
+}
+
+.NADCategoryPill {
+  background-color: $nad-grey-background-color;
+  color: $nad-color-text-bold-light;
+  // changed by vedant
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-right: 15px;
+  font-family: RobotoRegular, sans-serif;
+  font-size: 14px;
+}
+
+.NADDatePill  {
+  color: $nad-color-text-bold-dark;
+  text-transform: capitalize;
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: RobotoRegular, sans-serif;
+  &.redPill {
+    color: #fff;
+    background-color: $nad-color-primary-dark;
+  }
+  &.greenPill {
+    color: #fff;
+    background-color: $nad-color-accent-dark;
+  }
+}
+
+.NADLabelHeader {
+  font-size: 16px;
+  font-family: RobotoLight, sans-serif;
+  color: $nad-color-text-normal-dark;
+}
+
+.NADLabelText {
+  font-size: 20px;
+  text-transform: capitalize;
+  line-height: 20px;
+  font-family: RobotoLight, sans-serif;
+  color: $nad-color-text-bold-light;
+}
+
+.NADReferenceTitle {
+  font-size: 20px;
+  font-family: RobotoRegular, sans-serif;
+  color: $nad-color-text-bold-dark;
+}
+
+.NADSmallText {
+  font-size: 13px;
+  font-family: RobotoRegular, sans-serif;
+  color: $nad-color-text-normal-dark;
+}
+
+.NADTechPill {
+  height: 25px;
+  display: inline-block;
+  line-height: 25px;
+  background-color: $nad-grey-background-color;
+  color: $nad-color-text-bold-light;
+  text-transform: capitalize;
+  padding: 0 10px 0 30px;
+  border-radius: 10px;
+  margin-right: 15px;
+  font-family: RobotoRegular, sans-serif;
+  font-size: 14px;
+}
+
+// ********* NAD Standard classes **********//
+// ********* NAD Layout Standard classes **********//
+.dataCardWrapper {
+  position: relative;
+  width: 100%;
+  background-color: $nad-grey-background-color;
+  padding: 35px;
+  .dataCardContainer {
+    background-color: white;
+    border-radius: 10px;
+
+    .dataCardHeader {
+      @extend .NADHeader;
+      padding: 0 25px;
+      height: 60px;
+      line-height: 60px;
+      margin-bottom: 0;
+      border-bottom: 1px solid $nad-border-color-light;
+    }
+    .sectionCardHeader {
+      @extend .dataCardHeader;
+      height: 100px;
+      width: 100%;
+      line-height: 28px;
+      padding: 25px;
+      text-transform: capitalize;
+    }
+    .dataCard {
+      padding: 25px;
+    }
+  }
+}
+
+.cardSpacing {
+  padding: 35px;
+}
+
+.inputSpacing {
+  margin-bottom: 35px;
+}
+
+.nadRoundedCorner {
+  border-radius: 8px;
+}
+
+.dataRowHeight {
+  height: 100px;
+}
+
+.dataRowHeaderHeight {
+  height: 40px;
+}
+
+.cardHeaderHeight {
+  // added by vedant
+  line-height: 60px;
+  height: 60px;
+  padding: 0 15px;
+}
+
+.dataHeader {
+  color: #9faecb;
+  background-color: #e8eaf0;
+  font-family: RobotoBold, sans-serif;
+  font-size: 15px;
+}
+
+.tableDataText {
+  color: $nad-color-text-bold-dark;
+  font-family: RobotoRegular, sans-serif;
+}
+
+.dataRow:nth-child(even) {
+  background-color: $nad-table-cell-color;
+}
+
+.tableRow:nth-child(odd) {
+  background-color: $nad-table-cell-color;
+}
+
+// ********* NAD Layout Standard classes **********//
+
+.linePreWrap {
+  white-space: pre-line;
+}
+
+.width75 {
+  width: 75%;
+}

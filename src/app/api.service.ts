@@ -8,6 +8,8 @@ import {
 } from "@angular/common/http";
 import { Observer } from "rxjs";
 import { tap } from "rxjs/operators";
+import '../styles/themes.scss';
+import '../styles/styles.scss';
 
 @Injectable()
 export class ApiCallService {

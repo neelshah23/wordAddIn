@@ -68,7 +68,7 @@ h6 {
     align-items: center;
     -webkit-flex: 1 0 0;
     flex: 1 0 0;
-    padding: 30px 20px;
+    padding: 30px 0;
 }
 
 .ms-welcome__main > h2 {
@@ -125,6 +125,27 @@ h6 {
 
 .ms-welcome__action.ms-Button--hero:hover .ms-Button-icon .ms-Icon {
     border: none;
+}
+.margin20{
+    margin-bottom: 20px;
+}
+.logoutText{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+app-home, app-login{
+    width: 100%;
+}
+
+app-login{
+    margin: 160px 10px;
+    width: calc(100% - 20px);
+}
+.full-width {
+    width: 100%;
 }
 
 @media (min-width: 0) and (max-width: 350px) {

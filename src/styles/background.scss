@@ -1,0 +1,324 @@
+// nad-background assets styles
+
+// --- basic styles --- //
+.generalBG {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.coverBackground {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// --- icon urls --- //
+
+.hamburgerIcon {
+  background-image: url("../assets/images/hamburger.png");
+}
+
+.infoIcon {
+  background-image: url("../assets/images/info.png");
+}
+
+.notificationIcon {
+  background-image: url("../assets/images/notification.png");
+}
+
+.searchIcon {
+  background-image: url("../assets/images/search.png");
+}
+
+.userPlaceholderIcon {
+  background-image: url("../assets/images/user_placeholder.png");
+}
+
+.techMLogoFullIcon {
+  background-image: url("../assets/images/logofullblack.png");
+}
+
+.closeBlackIcon {
+  background-image: url("../assets/images/close_black.png");
+}
+
+.pentagonIcon {
+  background-image: url("../assets/images/pentagon.png");
+}
+
+.portfolioIcon {
+  background-image: url("../assets/images/portfolio.png");
+}
+
+.portfolioDisableIcon {
+  background-image: url("../assets/images/meps_disable.png");
+}
+
+.portfolioDisableIconContainer {
+  width: 60px;
+  height: 60px;
+}
+
+.portfolioWorkflowIcon {
+  background-image: url("../assets/images/portfolio_workflow.png");
+}
+
+.clockSmallIcon {
+  background-image: url("../assets/images/clock_small.png");
+}
+
+.mongodbIcon {
+  background-image: url("../assets/images/mongoDB.png");
+}
+
+.angularIcon {
+  background-image: url("../assets/images/angular.png");
+}
+
+.scrummasterIcon {
+  background-image: url("../assets/images/scrummaster.png");
+}
+
+.nodejsIcon {
+  background-image: url("../assets/images/nodeJS.png");
+}
+
+.expressjsIcon {
+  background-image: url("../assets/images/expressJS.png");
+}
+
+.previewPlaceholderIcon {
+  background-image: url("../assets/images/preview_placeholder.png");
+}
+
+.linkPlaceholderIcon {
+  background-image: url("../assets/images/linkplaceholder.png");
+}
+
+.downloadIcon {
+  background-image: url("../assets/images/download.png");
+}
+
+.nextIcon {
+  background-image: url("../assets/images/next.png");
+}
+
+.previousIcon {
+  background-image: url("../assets/images/previous.png");
+}
+
+.backIcon {
+  background-image: url("../assets/images/back_arrow.png");
+}
+
+.checkedIcon {
+  background-image: url("../assets/images/checked.png");
+}
+
+.viewIcon {
+  background-image: url("../assets/images/view.png");
+}
+
+.plusIcon {
+  background-image: url("../assets/images/plus.png");
+}
+
+.removeIcon {
+  background-image: url("../assets/images/remove.png");
+}
+
+.calenderIcon {
+  background-image: url("../assets/images/calender.png");
+}
+
+.stepGreenIcon {
+  // background-image: url("../assets/images/inflight/green tick.png");
+}
+
+.stepRedIcon {
+  // background-image: url("../assets/images/inflight/red tick.png");
+}
+
+.selectedStepIcon {
+  background-image: url("../assets/images/inflight/today.png");
+}
+
+.blankIcon {
+  background-image: url("../assets/images/inflight/empty.png");
+}
+
+.selectionIcon {
+  background-image: url("../assets/images/inflight/selection.png");
+}
+
+.Icon {
+  background-image: url("../assets/images/mongoDB.png");
+}
+
+.showMoreIcon {
+  background-image: url("../assets/icons/arrow1.png");
+}
+
+// .clockNotification{
+//   background-image: url("../assets/icons/calClock.png")
+// }
+
+// --- icon styles --- //
+
+.hamburgerIconContainer {
+  width: 25px;
+  height: 21px;
+}
+
+.infoIconContainer {
+  width: 25px;
+  height: 25px;
+}
+
+.notificationIconContainer, .searchIconContainer, .userPlaceholderIconContainer {
+  width: 29px;
+  height: 33px;
+}
+
+.techMLogoFullIconContainer {
+  width: 225px;
+  height: 52px;
+}
+
+.closeBlackIconContainer {
+  width: 32px;
+  height: 32px;
+}
+
+.pentagonIconContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolioIconContainer {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+}
+
+.workflowIconContainer {
+  width: 90%;
+  height: 95%;
+  margin: 0 auto;
+}
+
+.clockSmallIconContainer {
+  width: 22px;
+  height: 22px;
+}
+
+.techIconContainer {
+  width: 25px;
+  height: 25px;
+}
+
+.previewPlaceholderIconContainer {
+  width: 90px;
+  height: 90px;
+}
+
+.downloadIconContainer {
+  width: 24px;
+  height: 22px;
+}
+
+.nextIconContainer {
+  width: 13px;
+  height: 22px;
+}
+
+.backIconContainer {
+  width: 35px;
+  height: 34px;
+  margin-right: 12px;
+}
+
+.projectDetailsCardContainer {
+  height: 312px;
+}
+
+.backIconContainer {
+  width: 35px;
+  height: 34px;
+  margin-right: 12px;
+}
+
+.checkedIconContainer {
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+}
+
+.serviceCompabilityContainer {
+  width: 49px;
+  height: 46px;
+}
+
+.viewIconContainer {
+  width: 31px;
+  height: 19px;
+}
+
+.plusIconContainer {
+  width: 30px;
+  height: 30px;
+}
+
+.removeIconContainer {
+  width: 27px;
+  height: 27px;
+}
+
+.calenderIconContainer {
+  width: 21px;
+  height: 25px;
+}
+
+.stepIconContainer {
+  width: 19px;
+  height: 19px;
+}
+
+.selectedStepContainer {
+  width: 26px;
+  height: 26px;
+}
+
+.selectionIconContainer {
+  width: 43px;
+  height:43px;
+}
+
+.techMLogo {
+  background-image: url('../assets/icons/Tech.png');
+  width: 100%;
+  height: 100%;
+  background-size: auto;
+}
+
+.JIRAIcon {
+  background-image: url('../assets/images/jira.png');
+  height: 100px;
+  width: 150px;
+}
+
+// added by dhiraj 14-8-2018
+.search-icon {
+  background-image: url("../assets/icons/Search.png");
+}
+// added by anitha 31-8-2018
+//paste in backgrounds.scss
+.clockNotification{
+background-image: url("../assets/icons/calClock.png")
+}

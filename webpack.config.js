@@ -10,8 +10,7 @@ module.exports = {
         host: '0.0.0.0'
     },
     resolve: {
-
-        extensions: ['.ts', '.tsx', '.html', '.js']
+        extensions: ['.ts', '.tsx', '.html', '.js','.css']
 
     },
     module: {
@@ -29,6 +28,10 @@ module.exports = {
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
                 use: 'file-loader'
+            },
+            {
+                test:/\.(s*)css$/,
+                use:['style-loader','css-loader', 'sass-loader']
             }
         ]
     },

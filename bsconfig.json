@@ -1,0 +1,15 @@
+{
+    "ui": {
+        "host": "0.0.0.0",
+        "port": 3000
+    },
+    "server": {
+        "routes": {
+            "/node_modules": "node_modules"
+        }
+    },
+    "https": true,
+    "watch": true,
+    "files": "*.*",
+	"open": false
+}
