@@ -1,13 +1,15 @@
-<mat-card>
-    <h1 class="primaryColorRed" style="margin-bottom: 30px">Welcome to <span>CLM</span></h1>
+<section class="loginContainer">
+    <h1 class="primaryColorRed" style="margin-bottom: 30px">#let'scontract</h1>
     <mat-card-content>
     <mat-form-field class="full-width " >
-        <input matInput [(ngModel)]="user.email" placeholder="Email">
+        <input matInput [(ngModel)]="user.email" placeholder="Email" class="colorWhite">
     </mat-form-field>
     <mat-form-field class="full-width margin20" >
-        <input matInput type="password" [(ngModel)]="user.password" placeholder="Password">
+        <input matInput type="password" [(ngModel)]="user.password" placeholder="Password" class="colorWhite">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="callAPI()">Login</button>
+    <div class="center"> 
+    <button mat-raised-button color="primary" (click)="callAPI()" class="btn-ltscontract">Login</button>
+</div>
     </mat-card-content>
-</mat-card>
+</section>

@@ -19,72 +19,22 @@ const Home = require('./home.html');
     template: Home,
 })
 export class HomeComponent {
-    userDetails: any = {name:''};
 
-    userData:any = {
-        task: [{
-            id: '123A1',
-            details: 'This style is called List Bullet.'
-        },{
-            id: '123A2',
-            details:'If a Transition Deliverable or Transition Milestone is not Accepted, due to the fault of Service Provider, on or before the applicable Transition Acceptance Date, Service Provider will reimburse BJC for BJC’s costs and expenses associated with such '
-        },],
-        clause: [{}]
-    };
+    myRequest: any;
+    userDetails:any = {name: ''} ;
 
     constructor(private api: ApiCallService, private router: Router){
-        this.getUserDetails();
+        this.getMyRequest();
     }
 
-
-    getUserDetails(){
-        const user = localStorage.getItem("_u");
-        if(user){
-            this.userDetails = JSON.parse(user).result
-        }  else {
-            this.router.navigateByUrl('/login');
-        }
-    }
-    highlightTask(task){
-        this.searchString(task, 'yellow');
-    }
-
-    async searchString(str: any, color: string){
-        return Word.run(async (context) => {
-            let activeDocument = context.document.body.search(str.details, {
-                ignorePunct: true,
-                ignoreSpace: true,
-                matchCase: false,
-                matchWildcards: true
-            });
-            context.load(activeDocument, ['text','properties','comments', 'title','lists','paragraphs', 'listItem']);
-
-            return context.sync()
-                .then( async ()=> {
-                    const count = activeDocument.items.length;
-                    // // Queue a set of commands to change the font for each found item.
-                    if(count) {
-                        for (let i = 0; i < count; i++) {
-                            // if(activeDocument.items[i].font.highlightColor == color){
-                            const serviceNameContentControl = activeDocument.items[i].insertContentControl();
-                            serviceNameContentControl.title = '';
-                            serviceNameContentControl.tag = str.id;
-                            serviceNameContentControl.appearance = "Tags";
-                            serviceNameContentControl.color = color;
-                            activeDocument.items[i].font.highlightColor = color;
-                            // } else {
-                            //     activeDocument.items[i].font.highlightColor = color; //Yellow
-                            // }b
-                        }
-                    }
-                    return count;
-
-                })
-                .then(await context.sync()).catch(err => {
-                    console.log(err);
-                });
-
+    getMyRequest(){
+        this.api.callGetApi(`https://letscontract.run/activity/v1/request/user/7?status=All&page=0&limit=10&search_text=`).subscribe((res:any) => {
+            console.log(res.data);
+            this.myRequest = res.data.requests;
         });
+    }
+    showRequestDetails(requestID){
+        this.router.navigate(['/task',requestID]);
     }
 
 

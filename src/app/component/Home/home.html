@@ -1,32 +1,20 @@
 <div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
-    <mat-tab-group style="width: 100%">
-        <mat-tab label="My Tasks">
-            <div>
-                <div class="list">
-                    <ng-container *ngFor="let task of userData.task" >
-                    <p (click)="highlightTask(task)">
+    <div>
+        <div class="list">
+            <ng-container *ngFor="let task of myRequest" >
+                <p style="cursor: pointer">
                         <span style="margin-bottom: 10px;display: inline-block">
-                            <b>Task ID</b>: {{task.id}}
+                            {{task.id}}
                         </span>
-                        <br />
-                        {{task.details}}
-                        </p>
-                    <mat-divider></mat-divider>
-                    </ng-container>
-
-                </div>
-            </div>
-
-        </mat-tab>
-        <mat-tab label="Clause Library">
-            <div class="list">
-                <p>(A)	The terms and conditions set forth in this Master Agreement will be deemed to be incorporated into each Statement of Work and will govern Service Provider’s provision of Services under each Statement of Work, except for provisions in this Master Agreement that are specifically excluded from or modified in a Statement of Work, which, in order to be effective, will require the Statement of Work to include a reference to the applicable Section of this Master Agreement being excluded or modified.  Any exceptions to this Master Agreement expressly agreed upon in writing by the parties to a particular Statement of Work will apply only for purposes of that Statement of Work, and will not be deemed to in any way amend, modify, cancel or waive the provisions of this Master Agreement with respect to any other Statement of Work.</p>
+                    <br />
+                    {{task.customer_data.entity.name}}
+                    {{task.document_type}}
+                    {{task.updation_date | date: 'dd-MMM-yyyy'}}
+                </p>
+                <button (click)="showRequestDetails(task.id)">Details</button>
                 <mat-divider></mat-divider>
-                <p>Concurrently with the execution of the Agreement, Service Provider Parent will execute and provide a guarantee in the form set forth in Schedule 10, in favor of BJC and the other applicable Service Recipients pursuant to which Service Provider Parent will guarantee all of Service Provider’s obligations under the Agreement.</p>
-                <mat-divider></mat-divider>
-                <p>(A)	If a Statement of Work contemplates the transition of Outsourced Functions from BJC (including a Third Party Provider) to Service Provider (each, a “Transition”), such Transition will be conducted in accordance with the provisions of this Article, Schedule 3 and the applicable Statement of Work.</p>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
+            </ng-container>
+        </div>
+    </div>
     <p [routerLink]="'/login'" class="logoutText">Logout</p>
 </div>

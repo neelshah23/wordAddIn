@@ -48,11 +48,9 @@ export class ApiCallService {
   callGetApi(apiurl: string, params?: URLSearchParams) {
     return this.http
       .get(apiurl, {
-        // search: params,
         headers: {
             "Content-Type": "application/json",
-            "cache-control": "no-cache",
-            "Postman-Token": "89c57b8c-1a4d-47f7-b12f-03cd358ebc50"
+            "Authorization": this.getAuthToken()
         }
       })
       .pipe(
@@ -68,7 +66,7 @@ export class ApiCallService {
     return this.http
       .post(apiurl, body, {headers: {
         "content-type": "application/json",
-        authorization: "Basic TE4wVDEyMDg5OkhHVDZoR3RHckRfMzI4NTY="
+        authorization: this.getAuthToken()
       }})
       .pipe(
         tap(
@@ -84,7 +82,7 @@ export class ApiCallService {
         headers: {
           "content-type": "multipart/form-data",
           // authorization: "Basic aWF1cm86cGFzc3dvcmQ=",
-          authorization: "Basic TE4wVDEyMDg5OkhHVDZoR3RHckRfMzI4NTY="
+          authorization: this.getAuthToken()
         }
       })
       .pipe(
@@ -97,7 +95,7 @@ export class ApiCallService {
 
   callPutApi(apiurl: string, body: any) {
     const header = new HttpHeaders({
-      Authorization: localStorage.getItem("_t")
+      Authorization: this.getAuthToken()
     });
     return this.http
       .put(apiurl, body, {
@@ -126,5 +124,8 @@ export class ApiCallService {
           error => this.handleErrorResponse(error)
         )
       );
+  }
+  getAuthToken(): string{
+    return (localStorage.getItem('_u'))?'Bearer ' + JSON.parse(localStorage.getItem('_u')).data.user_token: '' ;
   }
 }

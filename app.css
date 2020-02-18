@@ -68,7 +68,7 @@ h6 {
     align-items: center;
     -webkit-flex: 1 0 0;
     flex: 1 0 0;
-    padding: 30px 0;
+    /* padding: 30px 0; */
 }
 
 .ms-welcome__main > h2 {
@@ -141,8 +141,10 @@ app-home, app-login{
 }
 
 app-login{
-    margin: 160px 10px;
-    width: calc(100% - 20px);
+     height: 100vh;
+    width: 100vw;
+    background: linear-gradient(180deg, #004387 0%, #161718 100%);
+
 }
 .full-width {
     width: 100%;
@@ -152,4 +154,31 @@ app-login{
     .ms-welcome__features {
         width: 100%;
     }
+}
+.loginContainer {
+    margin: 160px auto;
+    width: 80%;
+    
+}
+.loginContainer mat-card.mat-card{
+    background: transparent;
+}
+.mat-form-field-label{
+    color: white !important;
+    /* background: white; */
+}
+.mat-form-field-underline{
+    color: white !important;
+    background: white !important;
+}
+.btn-ltscontract{
+    height: 50px  !important;
+    min-width: 120px !important;
+    border-radius: 6px !important;
+    font-size: 15px  !important;
+    color: #2F4F91 !important;
+    cursor: pointer !important;
+}
+.center{
+    text-align: center;
 }

@@ -9,13 +9,15 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./component/Login/login";
 import {HomeComponent} from "./component/Home/home";
 import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule} from '@angular/material';
+import {TaskComponent} from "./component/Tasks/task";
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent }
+    { path: 'home', component: HomeComponent },
+    { path: 'task/:id', component: TaskComponent }
 ];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent],
   imports: [
       BrowserModule,
       HttpModule,
