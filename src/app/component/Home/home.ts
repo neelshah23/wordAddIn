@@ -90,8 +90,9 @@ export class HomeComponent implements OnInit{
             this.myRequest = res.data.requests;
         });
     }
-    showRequestDetails(requestID){
-        this.router.navigate(['/task',requestID]);
+    showRequestDetails(requestData){
+        localStorage.setItem('_rd',JSON.stringify(requestData));
+        this.router.navigate(['/task',requestData.id]);
     }
 
 

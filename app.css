@@ -268,3 +268,22 @@ app-login .btn-ltscontract{
 .mat-raised-button.mat-accent{
     color: white !important;
 }
+.requestSummary{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.requestSummary section{
+    width: calc(50% - 30px);
+    margin: 20px 0;
+    padding: 0 15px;
+}
+ section .summaryTitle{
+    color: #666;
+    font-size: 13px;
+}
+
+ section .summaryValue{
+    color: #333;
+    font-size: 14px;
+}

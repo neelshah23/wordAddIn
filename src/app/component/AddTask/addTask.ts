@@ -9,17 +9,13 @@ const Home = require('./addTask.html');
 @Component({
     selector: "app-add-task",
     styles:[`
-        /*app-add-task .mat-form-field-label{*/
-        /*    color: #2F4F91 !important;*/
-        /*}*/
-        /*app-add-task .mat-form-field-underline{*/
-        /*    color: #2F4F91 !important;*/
-        /*    background: #2F4F91 !important;*/
-        /*}*/
+        .full-width{
+            width: 100%;
+        }
         .mat-raised-button.mat-accent {
             color: #fff;
         }
-        `],
+    `],
     template: Home,
 })
 export class AddTaskComponent {

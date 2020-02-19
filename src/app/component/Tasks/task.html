@@ -1,6 +1,6 @@
 <div style="width: 100%;margin-bottom: 60px">
     <header class="myHeader">
-        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>{{this.requestID}}</span></h2>
+        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>{{(requestData.customer_data)?requestData.customer_data.name: requestData.vendor_data.name}}</span></h2>
     </header>
     <section class="searchWrapper">
         <div style="display: flex; flex: 100;">
@@ -19,13 +19,13 @@
             </section>
         </div>
     </section>
-    <section *ngIf="requestData.task.length">
+    <section *ngIf="taskData.task.length">
         <mat-tab-group style="width: 100vw" color="accent">
             <mat-tab label="Tasks">
 
                 <div>
                     <div>
-                        <ng-container *ngFor="let task of requestData.task" >
+                        <ng-container *ngFor="let task of taskData.task" >
                             <div class="myRequestData pointer" (click)="HighlightContentControlById(task.content_control)">
                                 <div style="display: flex; justify-content: space-between;align-items: center">
                                     <p class="colorLightGrey textEllipsis" style="width: 50%">{{task.id}}</p>
@@ -62,15 +62,60 @@
                 </div>
             </mat-tab>
             <mat-tab label="Summary">
-                <div class="list" ></div>
+                <div class="requestSummary">
+                    <section>
+                        <p class="summaryTitle">ID</p>
+                        <p class="summaryValue">{{requestData.id}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Status</p>
+                        <p class="summaryValue">{{requestData.document_status}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">{{(requestData.request_type === 'customer')?'Customer': 'Vendor'}}</p>
+                        <p class="summaryValue">{{(requestData.customer_data)?requestData.customer_data.name: requestData.vendor_data.name}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Document Type</p>
+                        <p class="summaryValue">{{requestData.document_type}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Added on</p>
+                        <p class="summaryValue">{{requestData.creation_date | date: 'dd-MMM-yyyy'}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Group Name</p>
+                        <p class="summaryValue">{{requestData.customer_data.customer_group_name_c || '-'}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Country</p>
+                        <p class="summaryValue">{{requestData.customer_data.country}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">City</p>
+                        <p class="summaryValue">{{requestData.customer_data.city}}</p>
+                    </section>
+                    <section>
+                        <p class="summaryTitle">Rainmaker</p>
+                        <p class="summaryValue">{{requestData.user_name.replace(',',' ')}}</p>
+                    </section>
+                </div>
             </mat-tab>
             <mat-tab label="Notes">
-                <div class="list" ></div>
-
+                <div style="padding: 20px 15px">
+                <section class="marginbottom20">
+                    <p class="summaryTitle">Details of the Deliverables</p>
+                    <p class="summaryValue">{{requestData.restriction}}</p>
+                </section>
+                <section>
+                    <p class="summaryTitle">Deal Peculiarities</p>
+                    <p class="summaryValue">{{requestData.other_picularities}}</p>
+                </section>
+                </div>
             </mat-tab>
         </mat-tab-group>
     </section>
-    <h1 class="list" *ngIf="!requestData.task.length">No task available</h1>
+    <h1 class="list" *ngIf="!taskData.task.length">No task available</h1>
 </div>
 <section class="padding10 fixedSectionBottom">
     <button (click)="uploadDocuments()" mat-button color="accent">Upload Document</button>

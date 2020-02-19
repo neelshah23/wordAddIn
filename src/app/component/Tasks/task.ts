@@ -21,8 +21,9 @@ const Home = require('./task.html');
 export class TaskComponent {
     userDetails: any = {name: ''};
     requestID: string;
+    requestData: any;
 
-    requestData:any = {
+    taskData:any = {
         task: [{
             id: '123A1',
             details: 'Service Provider is required to notify Grant Thornton if it becomes aware of any changes to Project Personnel’s record'
@@ -38,8 +39,8 @@ export class TaskComponent {
         this.activeRoute.params.subscribe(data => {
             this.requestID = data.id;
             this.getTaskList();
-
         });
+        this.requestData = JSON.parse(localStorage.getItem('_rd'));
 
     }
 
@@ -62,7 +63,7 @@ export class TaskComponent {
     getTaskList(){
         this.api.callGetApi(`https://letscontract.run/activity/v1/getTask/${this.userDetails.id}/${this.requestID}`).subscribe((res:any) => {
             console.log(res.data);
-            this.requestData.task = res.data;
+            this.taskData.task = res.data;
         });
     }
 

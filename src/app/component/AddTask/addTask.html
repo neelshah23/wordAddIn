@@ -1,17 +1,24 @@
-<div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
-    <button (click)="goBack()">Back</button>
-    <section style="margin-top: 30px;">
-        <button mat-button color="accent" (click)="createContentControl()">Get Clause</button>
-        <mat-form-field class="example-full-width" color="accent">
+<div style="width: 100vw;margin-bottom: 60px">
+    <header class="myHeader">
+        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>Add Task</span></h2>
+    </header>
+    <section style="padding: 15px">
+        <div class="marginbottom20">
+        <mat-form-field class="full-width" color="accent">
             <mat-label>Clause </mat-label>
             <textarea matInput [(ngModel)]="taskData.clause"  placeholder="Ex. It makes me feel..."></textarea>
         </mat-form-field>
-        <mat-form-field class="example-full-width" color="accent">
+        <button mat-stroked-button color="accent" (click)="createContentControl()">Get Clause</button>
+        </div>
+        <div class="marginbottom20">
+
+        <mat-form-field class="full-width" color="accent">
             <mat-label>Comment</mat-label>
             <textarea matInput [(ngModel)]="taskData.userComment"  placeholder="Ex. It makes me feel..."></textarea>
         </mat-form-field>
-        <section>
-            <mat-form-field color="accent">
+        </div>
+        <section class="marginbottom20">
+            <mat-form-field class="full-width" color="accent">
                 <mat-label>Assign</mat-label>
                 <mat-select [(ngModel)]="taskData.user_id">
                     <mat-option *ngFor="let user of myTeam" [value]="user.id">
@@ -20,10 +27,15 @@
                 </mat-select>
             </mat-form-field>
         </section>
-        <section>
-            <button (click)="goBack()" mat-button color="accent">Cancel</button>
-            <button (click)="addTask()" mat-raised-button color="accent">Save</button>
-        </section>
+<!--        <section>-->
+<!--            <button (click)="goBack()" mat-button color="accent">Cancel</button>-->
+<!--            <button (click)="addTask()" mat-raised-button color="accent">Save</button>-->
+<!--        </section>-->
     </section>
-    <p [routerLink]="'/login'" class="logoutText">Logout</p>
+<!--    <p [routerLink]="'/login'" class="logoutText">Logout</p>-->
 </div>
+<section class="padding10 fixedSectionBottom">
+    <button (click)="goBack()" mat-button color="accent">Cancel</button>
+    <button (click)="addTask()" mat-raised-button color="accent">Add Task</button>
+    <p class="marginTop20 logoutText" [routerLink]="'/login'">Logout</p>
+</section>
