@@ -75,6 +75,7 @@ export class AddTaskComponent {
 
         this.api.callPostApi(`https://letscontract.run/activity/v1/tasks`,this.taskData).subscribe((res:any) => {
             console.log(res.data);
+            this.goBack();
         });
     }
     getTeam(){
