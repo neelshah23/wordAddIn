@@ -24,13 +24,7 @@ export class TaskComponent {
     requestData: any;
 
     taskData:any = {
-        task: [{
-            id: '123A1',
-            details: 'Service Provider is required to notify Grant Thornton if it becomes aware of any changes to Project Personnel’s record'
-        },{
-            id: '123A2',
-            details:'Service Provider may have pre-existing property rights in certain materials that Service Provider uses in providing Services and Deliverables hereunder (“Service Provider Property”).  Service Provider shall identify any Service Provider Property in the applicable SOW.  Service Provider hereby grants to Grant Thornton an irrevocable, perpetual, fully-paid, royalty-free, worldwide'
-        },],
+        task: [{}],
         clause: [{}]
     };
 
@@ -43,7 +37,6 @@ export class TaskComponent {
         this.requestData = JSON.parse(localStorage.getItem('_rd'));
 
     }
-
 
     getUserDetails(){
         const user = localStorage.getItem("_u");
@@ -108,17 +101,12 @@ export class TaskComponent {
 
         });
     }
-
-    /**
-     * add content control to the selection
-     *
-     */
     createContentControl(){
         const title = "LCS";
-        let tag = "Task:1|LAU:5|Action:TBD|2020-02-12";
+        let tag = `Task:${new Date().getTime()}|${this.requestData.id}`;
         let base64FileString = false;
 
-        Word.run(function (context) {
+        Word.run( (context) => {
 
             const selectedRange = context.document.getSelection();
             const text = context.document.getSelection();
@@ -133,7 +121,7 @@ export class TaskComponent {
             context.load(myContentControl, 'id');
             context.load(text, ['text']);
 
-            return context.sync().then(function () {
+            return context.sync().then( ()=> {
                 if (!base64FileString) {
                     myContentControl.insertHtml(text.text, 'Replace');
                 }
@@ -147,7 +135,7 @@ export class TaskComponent {
 
                 context.load(searchResults, 'text');
 
-                return context.sync().then(function () {
+                return context.sync().then( () => {
 
                     for (let i = 0; i < searchResults.items.length; i++) {
 
@@ -166,14 +154,11 @@ export class TaskComponent {
 
                         context.load(subCC, 'id');
 
-                        context.sync().then(function () {
+                        context.sync().then( () => {
                             console.log('Created content control with id: ' + subCC.id);
                         });
-
                     }
-
                 });
-
             });
         })
             .catch(function (error) {
@@ -184,19 +169,16 @@ export class TaskComponent {
             });
 
     }
-
     HighlightContentControlById (tag: any) {
-        console.log(tag);
-        Word.run(function (context) {
-
+        Word.run( (context) => {
             const myContentControlObj = context.document.contentControls.getByTag(tag);
-
             context.load(myContentControlObj, 'id,text,font,tag');
-
-            return context.sync().then(function () {
-                // myContentControlObj.tag = myContentControlObj.tag;
-                // myContentControlObj.text = myContentControlObj.text;
-                // myContentControlObj.select();
+            return context.sync().then( () => {
+                for (let i = 0; i < myContentControlObj.items.length; i++) {
+                    const _temp = myContentControlObj.items[i];
+                    _temp.color="yellow";
+                    _temp.select();
+                }
                 return myContentControlObj;
             });
         })
