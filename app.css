@@ -242,3 +242,29 @@ app-login .btn-ltscontract{
     padding: 15px;
     border-bottom: 1px solid #efefef;
 }
+.commentUserInfo{
+    padding: 10px;
+
+}
+.userInitIcon{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: #2b579a;
+    color: white;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 10px;
+}
+.fixedSectionBottom{
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    background-color: white;
+    width: 100%;
+    border-top: 1px solid #d4d4d4;
+}
+.mat-raised-button.mat-accent{
+    color: white !important;
+}

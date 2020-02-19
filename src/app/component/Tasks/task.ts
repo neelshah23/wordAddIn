@@ -185,6 +185,7 @@ export class TaskComponent {
     }
 
     HighlightContentControlById (tag: any) {
+        console.log(tag);
         Word.run(function (context) {
 
             const myContentControlObj = context.document.contentControls.getByTag(tag);
@@ -208,6 +209,16 @@ export class TaskComponent {
     }
     addTask(){
         this.router.navigate(['/addTask', this.requestID])
+    }
+    getInitial(str){
+            if (!str) { return ''; }
+            str = str.toLowerCase().split(' ');
+
+            for (let i = 0; i < str.length; i++) {
+                str[i] = str[i].split('');
+                str[i] = str[i][0].toUpperCase();
+            }
+            return str.join('');
     }
 
 

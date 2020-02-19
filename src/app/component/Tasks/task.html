@@ -1,4 +1,4 @@
-<div style="width: 100%">
+<div style="width: 100%;margin-bottom: 60px">
     <header class="myHeader">
         <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>{{this.requestID}}</span></h2>
     </header>
@@ -24,15 +24,39 @@
             <mat-tab label="Tasks">
 
                 <div>
-                    <div class="list" >
+                    <div>
                         <ng-container *ngFor="let task of requestData.task" >
-                            <p (click)="highlightTask(task)">
-                        <span style="margin-bottom: 10px;display: inline-block"><b>Task ID</b>: {{task.id}}</span>
-                                <br />
-                                {{task.details}}
-                            </p>
-                            <button (click)="createContentControl()">Create CC</button>
-                            <mat-divider></mat-divider>
+                            <div class="myRequestData pointer" (click)="HighlightContentControlById(task.content_control)">
+                                <div style="display: flex; justify-content: space-between;align-items: center">
+                                    <p class="colorLightGrey textEllipsis" style="width: 50%">{{task.id}}</p>
+                                    <div style="width: 40%;display: flex;justify-content: flex-end">
+                                        <p class="requestStatus" >{{task.status}}</p>
+                                    </div>
+                                </div>
+                                <p class="requestName">{{task.clause}}</p>
+                                <div style="display: flex; justify-content: space-between;align-items: center">
+                                    <p><span class="colorDarkGrey"> {{task.department}}</span> - <span class="colorLightGrey">{{task.creation_at | date: 'EE, dd-MMM-yyyy'}}</span></p>
+                                    <!--                                    <i class="material-icons colorAccent text35" (click)="showRequestDetails(task.id)">arrow_right_alt</i>-->
+                                </div>
+
+                                <section class="taskComment marginTop20" *ngIf="task.comment">
+                                    <ng-container *ngFor="let comment of task.comment">
+                                        <p class="boldFont">{{(comment.length > 1)?'Comments':'Comment'}}</p>
+                                        <div class="commentUserInfo">
+                                            <div style="display: flex;align-items: center">
+                                                <div class="userInitIcon">{{getInitial(comment.name)}}</div>
+                                                <div style="display: flex;align-items: center">
+                                                    <p class="text14 colorDarkGrey boldFont">{{comment.name}}</p>
+                                                    <!--                                                    <p class="text12 colorLightGrey">{{comment.email}}</p>-->
+                                                </div>
+                                            </div>
+                                            <p style="margin: 10px 0">{{comment.message}}</p>
+                                            <p class="colorLightGrey text12">{{comment.date | date: 'EE, dd-MMM-yyyy'}}</p>
+                                        </div>
+                                    </ng-container>
+                                </section>
+                            </div>
+
                         </ng-container>
                     </div>
                 </div>
@@ -47,6 +71,9 @@
         </mat-tab-group>
     </section>
     <h1 class="list" *ngIf="!requestData.task.length">No task available</h1>
-    <button (click)="addTask()">Add task</button>
-    <p [routerLink]="'/login'" class="logoutText">Logout</p>
 </div>
+<section class="padding10 fixedSectionBottom">
+    <button (click)="uploadDocuments()" mat-button color="accent">Upload Document</button>
+    <button (click)="addTask()" mat-raised-button color="accent">Add task</button>
+    <p class="marginTop20 logoutText" [routerLink]="'/login'">Logout</p>
+</section>
