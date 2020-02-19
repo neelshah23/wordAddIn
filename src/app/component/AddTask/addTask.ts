@@ -32,6 +32,7 @@ export class AddTaskComponent {
         user_id: null,
         comment: []
     }
+    requestData: any;
 
     myTeam: any[] = [];
     departments: any[] = [];
@@ -42,6 +43,8 @@ export class AddTaskComponent {
             this.requestID = this.taskData.request_id = data.id;
             this.getTeam();
         });
+        this.requestData = JSON.parse(localStorage.getItem('_rd'));
+
 
     }
 
@@ -97,7 +100,7 @@ export class AddTaskComponent {
      */
     createContentControl(){
         const title = "LCS";
-        let tag = "Task:1|LAU:5|Action:TBD|2020-02-12";
+        let tag = `Task:${new Date().getTime()}|${this.requestData.id}`;
         let base64FileString = false;
 
         Word.run( (context) => {
