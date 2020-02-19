@@ -126,6 +126,6 @@ export class ApiCallService {
       );
   }
   getAuthToken(): string{
-    return (localStorage.getItem('_u'))?'Bearer ' + JSON.parse(localStorage.getItem('_u')).data.user_token: '' ;
+    return (localStorage.getItem('_u'))?'Bearer ' + JSON.parse(localStorage.getItem('_u')).data.user_token_with_timestamp: '' ;
   }
 }

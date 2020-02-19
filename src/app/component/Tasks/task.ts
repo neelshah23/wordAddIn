@@ -35,9 +35,10 @@ export class TaskComponent {
 
     constructor(private api: ApiCallService, private router: Router, private activeRoute: ActivatedRoute){
         this.getUserDetails();
-        this.getTaskList();
         this.activeRoute.params.subscribe(data => {
-            this.requestID = data.id
+            this.requestID = data.id;
+            this.getTaskList();
+
         });
 
     }
@@ -59,7 +60,7 @@ export class TaskComponent {
         history.back();
     }
     getTaskList(){
-        this.api.callGetApi(`https://letscontract.run/activity/v1/tasks/${this.requestID}`).subscribe((res:any) => {
+        this.api.callGetApi(`https://letscontract.run/activity/v1/getTask/${this.userDetails.id}/${this.requestID}`).subscribe((res:any) => {
             console.log(res.data);
             this.requestData.task = res.data;
         });
@@ -204,6 +205,9 @@ export class TaskComponent {
 
                 }
             });
+    }
+    addTask(){
+        this.router.navigate(['/addTask', this.requestID])
     }
 
 

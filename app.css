@@ -8,6 +8,8 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 ul,
@@ -163,15 +165,15 @@ app-login{
 .loginContainer mat-card.mat-card{
     background: transparent;
 }
-.mat-form-field-label{
+app-login .mat-form-field-label{
     color: white !important;
     /* background: white; */
 }
-.mat-form-field-underline{
+app-login .mat-form-field-underline{
     color: white !important;
     background: white !important;
 }
-.btn-ltscontract{
+app-login .btn-ltscontract{
     height: 50px  !important;
     min-width: 120px !important;
     border-radius: 6px !important;
@@ -181,4 +183,7 @@ app-login{
 }
 .center{
     text-align: center;
+}
+.myRequestData{
+
 }

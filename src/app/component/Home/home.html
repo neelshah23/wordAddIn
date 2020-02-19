@@ -1,18 +1,39 @@
-<div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
+<div style="width: 100%">
     <div>
-        <div class="list">
+        <header class="myHeader">
+            <h2 class="colorAccent">Requests</h2>
+        </header>
+        <section class="searchWrapper">
+            <div style="display: flex; flex: 100;">
+                <section style="display: flex;flex: 80">
+                    <input placeholder="Search Request">
+                    <div class="searchIconWrapper">
+                        <i class="material-icons searchButton">
+                            search
+                        </i>
+                    </div>
+                </section>
+                <section style="display: flex;flex: 10; align-items: center">
+                    <i class="material-icons colorAccent">
+                        filter_list
+                    </i>
+                </section>
+            </div>
+        </section>
+        <div>
             <ng-container *ngFor="let task of myRequest" >
-                <p style="cursor: pointer">
-                        <span style="margin-bottom: 10px;display: inline-block">
-                            {{task.id}}
-                        </span>
-                    <br />
-                    {{task.customer_data.entity.name}}
-                    {{task.document_type}}
-                    {{task.updation_date | date: 'dd-MMM-yyyy'}}
-                </p>
-                <button (click)="showRequestDetails(task.id)">Details</button>
-                <mat-divider></mat-divider>
+                <div class="myRequestData">
+                    <div style="display: flex; justify-content: space-between;align-items: center">
+                        <p class="colorLightGrey boldFont">{{task.id}}</p>
+                        <p class="requestStatus">{{task.document_status}}</p>
+                    </div>
+                    <p class="requestName">{{(task.customer_data)?task.customer_data.entity.name: task.vendor_data.entity.name}}</p>
+                    <div style="display: flex; justify-content: space-between;align-items: center">
+                        <p><span class="colorDarkGrey"> {{task.document_type}}</span> - <span class="colorLightGrey">{{task.updation_date | date: 'EE, dd-MMM-yyyy'}}</span></p>
+                        <i class="material-icons colorAccent text35" (click)="showRequestDetails(task.id)">arrow_right_alt</i>
+
+                    </div>
+                </div>
             </ng-container>
         </div>
     </div>

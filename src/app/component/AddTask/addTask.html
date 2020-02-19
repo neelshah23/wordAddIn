@@ -1,0 +1,29 @@
+<div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
+    <button (click)="goBack()">Back</button>
+    <section style="margin-top: 30px;">
+        <button mat-button color="accent" (click)="createContentControl()">Get Clause</button>
+        <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Clause </mat-label>
+            <textarea matInput [(ngModel)]="taskData.clause"  placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Comment</mat-label>
+            <textarea matInput [(ngModel)]="taskData.userComment"  placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+        <section>
+            <mat-form-field color="accent">
+                <mat-label>Assign</mat-label>
+                <mat-select [(ngModel)]="taskData.user_id">
+                    <mat-option *ngFor="let user of myTeam" [value]="user.id">
+                        {{user.user_name.replace(',',' ') + ' - ' + user.type + ' - ' + user.team}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </section>
+        <section>
+            <button (click)="goBack()" mat-button color="accent">Cancel</button>
+            <button (click)="addTask()" mat-raised-button color="accent">Save</button>
+        </section>
+    </section>
+    <p [routerLink]="'/login'" class="logoutText">Logout</p>
+</div>

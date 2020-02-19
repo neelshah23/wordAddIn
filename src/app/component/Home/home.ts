@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ApiCallService} from "../../api.service";
 import {Router} from "@angular/router";
 
@@ -9,32 +9,100 @@ const Home = require('./home.html');
 @Component({
     selector: "app-home",
     styles:[`
-        .list p{
+        .myHeader {
+            border-bottom: 1px solid #efefef;
+            border-top: 1px solid #efefef;
+            padding: 15px 10px;
+        }
+
+        .searchWrapper {
+            border-bottom: 1px solid #efefef;
+            padding: 5px 10px;
+        }
+        .searchIconWrapper{
+            align-items: center;
+            background-color: #efefef;
+            display: flex;
+            padding: 0 10px;
+            color: #2b579a;
+        }
+
+        .searchWrapper input {
+            background-color: #EEF1F8;
+            color: #333;
+            border-radius: 3px 0 0 3px;
+            padding: 13px;
+            box-shadow: none;
+            outline: 0;
+            width: 65%;
+            border: 0;
+            font-size: 14px;
+            margin: 0;
+        }
+        .requestStatus{
+            color: #2b579a;
+            border-radius: 20px;
+            border: 1px solid #2b579a;
+            padding: 4px 10px;
+            font-size: 12px;
+        }
+        .requestName{
+            color: #04122E;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 18px;
+            padding: 15px 0;
+        }
+        .myRequestData{
+            padding: 15px;
+            border-bottom: 1px solid #efefef;
+        }
+
+        .list p {
             font-size: 16px;
             padding: 15px;
         }
-        .list p:nth-of-type(odd){
+
+        .list .myRequestData:nth-of-type(odd) {
             background-color: #f7f7f7;
         }`],
     template: Home,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
     myRequest: any;
-    userDetails:any = {name: ''} ;
+    userDetails: any = {name: ''} ;
 
     constructor(private api: ApiCallService, private router: Router){
-        this.getMyRequest();
+        this.getUserDetails();
+
     }
 
+    ngOnInit(): void {
+        console.log('sdf');
+        this.getMyRequest();
+    }
     getMyRequest(){
-        this.api.callGetApi(`https://letscontract.run/activity/v1/request/user/7?status=All&page=0&limit=10&search_text=`).subscribe((res:any) => {
+        console.log('adasdas');
+
+        this.api.callGetApi(`https://letscontract.run/activity/v1/request/user/${this.userDetails.id}?status=All&page=0&limit=10&search_text=`).subscribe((res:any) => {
             console.log(res.data);
             this.myRequest = res.data.requests;
         });
     }
     showRequestDetails(requestID){
         this.router.navigate(['/task',requestID]);
+    }
+
+
+    getUserDetails(){
+        const user = localStorage.getItem("_u");
+        if(user){
+            this.userDetails = JSON.parse(user).data
+        }  else {
+            localStorage.clear();
+            this.router.navigateByUrl('/login');
+        }
     }
 
 

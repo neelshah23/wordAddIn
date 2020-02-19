@@ -1,8 +1,8 @@
 <div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
     <button (click)="goBack()">Back</button>
     <section *ngIf="requestData.task.length">
-    <mat-tab-group style="width: 100%">
-        <mat-tab label="My Tasks">
+    <mat-tab-group style="width: 100vw" color="accent">
+        <mat-tab label="Tasks">
             <div>
                 <div class="list" >
                     <ng-container *ngFor="let task of requestData.task" >
@@ -19,17 +19,16 @@
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Clause Library">
-            <div class="list">
-                <p>(A)	The terms and conditions set forth in this Master Agreement will be deemed to be incorporated into each Statement of Work and will govern Service Provider’s provision of Services under each Statement of Work, except for provisions in this Master Agreement that are specifically excluded from or modified in a Statement of Work, which, in order to be effective, will require the Statement of Work to include a reference to the applicable Section of this Master Agreement being excluded or modified.  Any exceptions to this Master Agreement expressly agreed upon in writing by the parties to a particular Statement of Work will apply only for purposes of that Statement of Work, and will not be deemed to in any way amend, modify, cancel or waive the provisions of this Master Agreement with respect to any other Statement of Work.</p>
-                <mat-divider></mat-divider>
-                <p>Concurrently with the execution of the Agreement, Service Provider Parent will execute and provide a guarantee in the form set forth in Schedule 10, in favor of BJC and the other applicable Service Recipients pursuant to which Service Provider Parent will guarantee all of Service Provider’s obligations under the Agreement.</p>
-                <mat-divider></mat-divider>
-                <p>(A)	If a Statement of Work contemplates the transition of Outsourced Functions from BJC (including a Third Party Provider) to Service Provider (each, a “Transition”), such Transition will be conducted in accordance with the provisions of this Article, Schedule 3 and the applicable Statement of Work.</p>
-            </div>
+        <mat-tab label="Summary">
+            <div class="list" ></div>
+        </mat-tab>
+        <mat-tab label="Notes">
+            <div class="list" ></div>
+
         </mat-tab>
     </mat-tab-group>
     </section>
     <h1 class="list" *ngIf="!requestData.task.length">No task available</h1>
+    <button (click)="addTask()">Add task</button>
     <p [routerLink]="'/login'" class="logoutText">Logout</p>
 </div>

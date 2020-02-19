@@ -8,16 +8,19 @@ import {FormsModule} from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./component/Login/login";
 import {HomeComponent} from "./component/Home/home";
-import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule} from '@angular/material';
+import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {TaskComponent} from "./component/Tasks/task";
+import {AddTaskComponent} from "./component/AddTask/addTask";
+
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'task/:id', component: TaskComponent }
+    { path: 'task/:id', component: TaskComponent },
+    { path: 'addTask/:id', component: AddTaskComponent }
 ];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent,AddTaskComponent],
   imports: [
       BrowserModule,
       HttpModule,
@@ -30,7 +33,7 @@ const routes: Routes = [
       MatListModule,
       MatCardModule,
       MatInputModule,
-      MatButtonModule],
+      MatButtonModule, MatSelectModule],
   bootstrap: [AppComponent]
 })
 export default class AppModule { }
