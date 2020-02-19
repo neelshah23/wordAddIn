@@ -138,6 +138,9 @@ h6 {
     cursor: pointer;
     font-weight: bold;
 }
+.pointer{
+    cursor: pointer;
+}
 app-home, app-login{
     width: 100%;
 }
@@ -186,4 +189,56 @@ app-login .btn-ltscontract{
 }
 .myRequestData{
 
+}
+.material-icons{
+    cursor: pointer;
+    vertical-align: middle;
+}
+.myHeader {
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    padding: 15px 10px;
+}
+
+.searchWrapper {
+    border-bottom: 1px solid #efefef;
+    padding: 5px 10px;
+}
+.searchIconWrapper{
+    align-items: center;
+    background-color: #efefef;
+    display: flex;
+    padding: 0 10px;
+    color: #2b579a;
+}
+
+.searchWrapper input {
+    background-color: #EEF1F8;
+    color: #333;
+    border-radius: 3px 0 0 3px;
+    padding: 13px;
+    box-shadow: none;
+    outline: 0;
+    width: 65%;
+    border: 0;
+    font-size: 14px;
+    margin: 0;
+}
+.requestStatus{
+    color: #2b579a;
+    border-radius: 20px;
+    border: 1px solid #2b579a;
+    padding: 4px 10px;
+    font-size: 12px;
+}
+.requestName{
+    color: #04122E;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 15px 0;
+}
+.myRequestData{
+    padding: 15px;
+    border-bottom: 1px solid #efefef;
 }

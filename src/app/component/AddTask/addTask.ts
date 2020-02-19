@@ -70,10 +70,9 @@ export class AddTaskComponent {
     addTask(){
         const _tempComment = {
             message: this.taskData.userComment,
-            user_name: this.userDetails.name,
-            user_id:this.userDetails.id,
-            user_email: this.userDetails.email,
-            created_at: new Date()
+            name: this.userDetails.name,
+            userId:this.userDetails.id,
+            date: new Date()
         };
         this.taskData.comment.push(_tempComment);
         delete this.taskData.userComment;

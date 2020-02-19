@@ -27,7 +27,7 @@
                         <p class="colorLightGrey boldFont">{{task.id}}</p>
                         <p class="requestStatus">{{task.document_status}}</p>
                     </div>
-                    <p class="requestName">{{(task.customer_data)?task.customer_data.entity.name: task.vendor_data.entity.name}}</p>
+                    <p class="requestName">{{(task.customer_data)?task.customer_data.name: task.vendor_data.name}}</p>
                     <div style="display: flex; justify-content: space-between;align-items: center">
                         <p><span class="colorDarkGrey"> {{task.document_type}}</span> - <span class="colorLightGrey">{{task.updation_date | date: 'EE, dd-MMM-yyyy'}}</span></p>
                         <i class="material-icons colorAccent text35" (click)="showRequestDetails(task.id)">arrow_right_alt</i>

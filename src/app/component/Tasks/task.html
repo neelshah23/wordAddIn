@@ -1,32 +1,50 @@
-<div style="width: 100%"><h1>Welcome, {{userDetails.name || 'Guest'}}</h1>
-    <button (click)="goBack()">Back</button>
-    <section *ngIf="requestData.task.length">
-    <mat-tab-group style="width: 100vw" color="accent">
-        <mat-tab label="Tasks">
-            <div>
-                <div class="list" >
-                    <ng-container *ngFor="let task of requestData.task" >
-                    <p (click)="highlightTask(task)">
-                        <span style="margin-bottom: 10px;display: inline-block">
-                            <b>Task ID</b>: {{task.id}}
-                        </span>
-                        <br />
-                        {{task.details}}
-                        </p>
-                        <button (click)="createContentControl()">Create CC</button>
-                    <mat-divider></mat-divider>
-                    </ng-container>
+<div style="width: 100%">
+    <header class="myHeader">
+        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>{{this.requestID}}</span></h2>
+    </header>
+    <section class="searchWrapper">
+        <div style="display: flex; flex: 100;">
+            <section style="display: flex;flex: 80">
+                <input placeholder="Search Tasks">
+                <div class="searchIconWrapper">
+                    <i class="material-icons searchButton">
+                        search
+                    </i>
                 </div>
-            </div>
-        </mat-tab>
-        <mat-tab label="Summary">
-            <div class="list" ></div>
-        </mat-tab>
-        <mat-tab label="Notes">
-            <div class="list" ></div>
+            </section>
+            <section style="display: flex;flex: 10; align-items: center">
+                <i class="material-icons colorAccent">
+                    filter_list
+                </i>
+            </section>
+        </div>
+    </section>
+    <section *ngIf="requestData.task.length">
+        <mat-tab-group style="width: 100vw" color="accent">
+            <mat-tab label="Tasks">
 
-        </mat-tab>
-    </mat-tab-group>
+                <div>
+                    <div class="list" >
+                        <ng-container *ngFor="let task of requestData.task" >
+                            <p (click)="highlightTask(task)">
+                        <span style="margin-bottom: 10px;display: inline-block"><b>Task ID</b>: {{task.id}}</span>
+                                <br />
+                                {{task.details}}
+                            </p>
+                            <button (click)="createContentControl()">Create CC</button>
+                            <mat-divider></mat-divider>
+                        </ng-container>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Summary">
+                <div class="list" ></div>
+            </mat-tab>
+            <mat-tab label="Notes">
+                <div class="list" ></div>
+
+            </mat-tab>
+        </mat-tab-group>
     </section>
     <h1 class="list" *ngIf="!requestData.task.length">No task available</h1>
     <button (click)="addTask()">Add task</button>
