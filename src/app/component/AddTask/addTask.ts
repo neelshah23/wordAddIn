@@ -82,20 +82,20 @@ export class AddTaskComponent {
             userId:this.userDetails.id,
             date: new Date()
         };
-        this.taskData.comment.push(_tempComment);
 
         if(this.isNewTask) {
             delete this.taskData.userComment;
+            this.taskData.comment.push(_tempComment);
 
             this.api.callPostApi(`https://letscontract.run/activity/v1/tasks`, this.taskData).subscribe((res: any) => {
                 this.goBack();
             });
         } else {
 
-            if(this.taskData.userComment === ''){
-                delete this.taskData.userComment;
-                delete this.taskData.comment;
+            if(this.taskData.userComment !== ''){
+                this.taskData.comment.push(_tempComment);
             }
+            delete this.taskData.userComment;
             this.api.callPutApi(`https://letscontract.run/activity/v1/tasks/${this.taskData['id']}`, this.taskData).subscribe((res: any) => {
                 this.goBack();
             });
