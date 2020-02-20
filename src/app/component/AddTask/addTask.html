@@ -32,15 +32,15 @@
             <div>
                 <section class="marginbottom20">
                     <p class="summaryTitle">ID</p>
-                    <p class="summaryValue">{{taskData.id}}</p>
+                    <p class="summaryValue">{{taskData_update.id}}</p>
                 </section>
                 <section class="marginbottom20">
                     <p class="summaryTitle">Clause</p>
-                    <p class="summaryValue">{{taskData.clause}}</p>
+                    <p class="summaryValue">{{taskData_update.clause}}</p>
                 </section>
                 <section>
                     <p class="summaryTitle">Assign</p>
-                    <p class="summaryValue">{{taskData.assign}}</p>
+                    <p class="summaryValue">{{taskData_update.assign}}</p>
                 </section>
                 <section class="taskComment marginTop20" *ngIf="taskData.comment">
                     <p class="boldFont">{{(taskData.comment.length > 1)?'Comments':'Comment'}}</p>

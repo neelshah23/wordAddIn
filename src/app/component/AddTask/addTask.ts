@@ -53,7 +53,7 @@ export class AddTaskComponent {
             this.taskData['id'] = this.taskData_update.id;
             this.taskData.comment = this.taskData_update.comment;
             this.taskData['status'] = this.taskData_update.status;
-            this.highlightContentControlById(this.taskData.content_control);
+            this.highlightContentControlById(this.taskData_update.content_control);
         }
     }
 
