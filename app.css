@@ -251,7 +251,7 @@ app-login .btn-ltscontract{
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    background-color: #2b579a;
+    background-color: #333;
     color: white;
     font-weight: bold;
     line-height: 35px;
@@ -288,3 +288,6 @@ app-login .btn-ltscontract{
     color: #333;
     font-size: 14px;
 }
+ .bgWhite{
+     background-color: white;
+ }

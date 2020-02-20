@@ -1,41 +1,63 @@
 <div style="width: 100%">
-    <div>
-        <header class="myHeader">
-            <h2 class="colorAccent">Requests</h2>
-        </header>
-        <section class="searchWrapper">
-            <div style="display: flex; flex: 100;">
-                <section style="display: flex;flex: 80">
-                    <input placeholder="Search Request" [(ngModel)]="searchText">
-                    <div class="searchIconWrapper">
-                        <i class="material-icons searchButton">
-                            search
-                        </i>
-                    </div>
-                </section>
-                <section style="display: flex;flex: 10; align-items: center">
-                    <i class="material-icons colorAccent">
-                        filter_list
-                    </i>
-                </section>
-            </div>
-        </section>
-        <div>
-            <ng-container *ngFor="let task of myRequest | requestFilter: searchText" >
-                <div class="myRequestData">
-                    <div style="display: flex; justify-content: space-between;align-items: center">
-                        <p class="colorLightGrey boldFont">{{task.id}}</p>
-                        <p class="requestStatus">{{task.document_status}}</p>
-                    </div>
-                    <p class="requestName">{{(task.customer_data)?task.customer_data.name: task.vendor_data.name}}</p>
-                    <div style="display: flex; justify-content: space-between;align-items: center">
-                        <p><span class="colorDarkGrey"> {{task.document_type}}</span> - <span class="colorLightGrey">{{task.updation_date | date: 'EE, dd-MMM-yyyy'}}</span></p>
-                        <i class="material-icons colorAccent text35" (click)="showRequestDetails(task)">arrow_right_alt</i>
-
+    <mat-sidenav-container >
+        <mat-sidenav #sidenav mode="over" style="width: 70vw">
+            <section>
+                <div style="text-align: right;margin:10px"><i class="material-icons" (click)="sidenav.toggle()">cancel</i></div>
+                <div class="center">
+                    <div class="userInitIcon text17 boldFont" style="margin:0 auto 20px;height: 60px;width: 60px;line-height: 60px">{{getInitial(userDetails.name)}}</div>
+                    <p class="capitalize boldFont colorAccent">{{userDetails.name.replace(',',' ')}}</p>
+                    <button mat-stroked-button color="accent" style="margin: 20px auto" (click)="logout()">Logout</button>
+                    <mat-divider></mat-divider>
+                    <div>
+                        <mat-list role="list">
+                            <mat-list-item routerLink="/home" routerLinkActive="activeMenu" role="listitem">Request</mat-list-item>
+                            <mat-list-item role="listitem">Clause Library</mat-list-item>
+                            <mat-list-item role="listitem">Templates</mat-list-item>
+                        </mat-list>
                     </div>
                 </div>
-            </ng-container>
-        </div>
-    </div>
-    <p [routerLink]="'/login'" class="logoutText">Logout</p>
+            </section>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="bgWhite">
+                <header class="myHeader">
+                    <h2 class="colorAccent"><i (click)="sidenav.toggle()" class="material-icons" style="margin-right: 10px">menu</i>Requests</h2>
+                </header>
+                <section class="searchWrapper">
+                    <div style="display: flex; flex: 100;">
+                        <section style="display: flex;flex: 80">
+                            <input placeholder="Search Request" [(ngModel)]="searchText">
+                            <div class="searchIconWrapper">
+                                <i class="material-icons searchButton">
+                                    search
+                                </i>
+                            </div>
+                        </section>
+                        <section style="display: flex;flex: 10; align-items: center">
+                            <i class="material-icons colorAccent">
+                                filter_list
+                            </i>
+                        </section>
+                    </div>
+                </section>
+                <div>
+                    <ng-container *ngFor="let task of myRequest | requestFilter: searchText" >
+                        <div class="myRequestData">
+                            <div style="display: flex; justify-content: space-between;align-items: center">
+                                <p class="colorLightGrey boldFont">{{task.id}}</p>
+                                <p class="requestStatus">{{task.document_status}}</p>
+                            </div>
+                            <p class="requestName">{{(task.customer_data)?task.customer_data.name: task.vendor_data.name}}</p>
+                            <div style="display: flex; justify-content: space-between;align-items: center">
+                                <p><span class="colorDarkGrey"> {{task.document_type}}</span> - <span class="colorLightGrey">{{task.updation_date | date: 'EE, dd-MMM-yyyy'}}</span></p>
+                                <i class="material-icons colorAccent text35" (click)="showRequestDetails(task)">arrow_right_alt</i>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <p [routerLink]="'/login'" class="logoutText">Logout</p>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

@@ -9,6 +9,9 @@ const Home = require('./home.html');
 @Component({
     selector: "app-home",
     styles:[`
+        .activeMenu{
+            font-weight: bold;
+        }
         .myHeader {
             border-bottom: 1px solid #efefef;
             border-top: 1px solid #efefef;
@@ -104,6 +107,20 @@ export class HomeComponent implements OnInit{
             localStorage.clear();
             this.router.navigateByUrl('/login');
         }
+    }
+    logout() {
+        localStorage.clear();
+        this.router.navigateByUrl('/login');
+    }
+    getInitial(str){
+        if (!str) { return ''; }
+        str = str.toLowerCase().replace(',',' ').split(' ');
+
+        for (let i = 0; i < str.length; i++) {
+            str[i] = str[i].split('');
+            str[i] = str[i][0].toUpperCase();
+        }
+        return str.join('');
     }
 
 

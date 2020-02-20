@@ -8,7 +8,7 @@ import {FormsModule} from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./component/Login/login";
 import {HomeComponent} from "./component/Home/home";
-import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule, MatSelectModule} from '@angular/material';
+import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule, MatSelectModule, MatSidenavModule} from '@angular/material';
 import {TaskComponent} from "./component/Tasks/task";
 import {AddTaskComponent} from "./component/AddTask/addTask";
 import {FilterPipe } from "./component/filter.pipe";
@@ -35,7 +35,7 @@ const routes: Routes = [
       MatListModule,
       MatCardModule,
       MatInputModule,
-      MatButtonModule, MatSelectModule],
+      MatButtonModule, MatSelectModule, MatSidenavModule],
   bootstrap: [AppComponent]
 })
 export default class AppModule { }
