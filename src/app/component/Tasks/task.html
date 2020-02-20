@@ -5,7 +5,7 @@
     <section class="searchWrapper">
         <div style="display: flex; flex: 100;">
             <section style="display: flex;flex: 80">
-                <input placeholder="Search Tasks">
+                <input placeholder="Search Tasks" [(ngModel)]="taskFilter">
                 <div class="searchIconWrapper">
                     <i class="material-icons searchButton">
                         search
@@ -24,7 +24,7 @@
             <mat-tab label="Tasks">
                 <div *ngIf="taskData.task.length">
                     <div>
-                        <ng-container *ngFor="let task of taskData.task" >
+                        <ng-container *ngFor="let task of taskData.task | taskfilter: taskFilter" >
                             <div class="myRequestData pointer" (click)="upsertTask(0, task)">
                                 <div style="display: flex; justify-content: space-between;align-items: center">
                                     <p class="colorLightGrey textEllipsis" style="width: 50%">{{task.id}}</p>

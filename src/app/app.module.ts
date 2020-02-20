@@ -11,6 +11,8 @@ import {HomeComponent} from "./component/Home/home";
 import {MatTabsModule, MatButtonModule, MatListModule, MatDividerModule, MatInputModule, MatCardModule, MatSelectModule} from '@angular/material';
 import {TaskComponent} from "./component/Tasks/task";
 import {AddTaskComponent} from "./component/AddTask/addTask";
+import {FilterPipe } from "./component/filter.pipe";
+import {RequestFilterPipe } from "./component/reqfilter.pipe";
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,7 +22,7 @@ const routes: Routes = [
     { path: 'addTask/:id/:op', component: AddTaskComponent }
 ];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent,AddTaskComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent,AddTaskComponent, FilterPipe, RequestFilterPipe],
   imports: [
       BrowserModule,
       HttpModule,

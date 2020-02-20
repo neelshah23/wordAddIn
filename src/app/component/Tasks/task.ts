@@ -22,6 +22,7 @@ export class TaskComponent {
     userDetails: any = {name: ''};
     requestID: string;
     requestData: any;
+    taskFilter: string;
 
     taskData:any = {
         task: [{}],

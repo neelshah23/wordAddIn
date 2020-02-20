@@ -6,7 +6,7 @@
         <section class="searchWrapper">
             <div style="display: flex; flex: 100;">
                 <section style="display: flex;flex: 80">
-                    <input placeholder="Search Request">
+                    <input placeholder="Search Request" [(ngModel)]="searchText">
                     <div class="searchIconWrapper">
                         <i class="material-icons searchButton">
                             search
@@ -21,7 +21,7 @@
             </div>
         </section>
         <div>
-            <ng-container *ngFor="let task of myRequest" >
+            <ng-container *ngFor="let task of myRequest | requestFilter: searchText" >
                 <div class="myRequestData">
                     <div style="display: flex; justify-content: space-between;align-items: center">
                         <p class="colorLightGrey boldFont">{{task.id}}</p>
