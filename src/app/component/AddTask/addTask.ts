@@ -34,6 +34,7 @@ export class AddTaskComponent {
         comment: []
     }
     requestData: any;
+    taskStatus = ['need to review', 'done'];
 
     myTeam: any[] = [];
     departments: any[] = [];
@@ -50,17 +51,10 @@ export class AddTaskComponent {
         this.taskData_update = ( _td && _td !== 'null')?JSON.parse(_td): null;
         if(this.taskData_update) {
             this.taskData['id'] = this.taskData_update.id;
-            this.taskData.userComment = this.taskData_update.comment[this.taskData_update.comment.length - 1].message;
-            this.taskData.clause = this.taskData_update.clause;
             this.taskData.comment = this.taskData_update.comment;
-            this.taskData.user_id = this.taskData_update.user_id;
-            this.taskData.content_control = this.taskData_update.content_control;
-            this.taskData.department = this.taskData_update.department;
-            this.taskData.request_id = this.taskData_update.request_id;
+            this.taskData['status'] = this.taskData_update.status;
             this.highlightContentControlById(this.taskData.content_control);
         }
-
-
     }
 
 
@@ -89,13 +83,19 @@ export class AddTaskComponent {
             date: new Date()
         };
         this.taskData.comment.push(_tempComment);
-        delete this.taskData.userComment;
 
         if(this.isNewTask) {
+            delete this.taskData.userComment;
+
             this.api.callPostApi(`https://letscontract.run/activity/v1/tasks`, this.taskData).subscribe((res: any) => {
                 this.goBack();
             });
         } else {
+
+            if(this.taskData.userComment === ''){
+                delete this.taskData.userComment;
+                delete this.taskData.comment;
+            }
             this.api.callPutApi(`https://letscontract.run/activity/v1/tasks/${this.taskData['id']}`, this.taskData).subscribe((res: any) => {
                 this.goBack();
             });
@@ -214,5 +214,15 @@ export class AddTaskComponent {
 
                 }
             });
+    }
+    getInitial(str){
+        if (!str) { return ''; }
+        str = str.toLowerCase().split(' ');
+
+        for (let i = 0; i < str.length; i++) {
+            str[i] = str[i].split('');
+            str[i] = str[i][0].toUpperCase();
+        }
+        return str.join('');
     }
 }

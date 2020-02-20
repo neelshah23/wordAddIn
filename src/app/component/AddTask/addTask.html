@@ -1,21 +1,21 @@
 <div style="width: 100vw;margin-bottom: 60px">
     <header class="myHeader">
-        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>Add Task</span></h2>
+        <h2 class="colorAccent pointer" (click)="goBack()"><i class="material-icons">keyboard_backspace</i> <span>{{(isNewTask)?'Add':'Update'}} Task</span></h2>
     </header>
     <section style="padding: 15px">
+        <ng-container *ngIf="isNewTask">
         <div class="marginbottom20">
-        <mat-form-field class="full-width" color="accent">
-            <mat-label>Clause </mat-label>
-            <textarea matInput [(ngModel)]="taskData.clause"  placeholder="Ex. It makes me feel..."></textarea>
-        </mat-form-field>
-        <button mat-stroked-button color="accent" (click)="createContentControl()">Get Clause</button>
+            <mat-form-field class="full-width" color="accent">
+                <mat-label>Clause</mat-label>
+                <textarea matInput [(ngModel)]="taskData.clause" ></textarea>
+            </mat-form-field>
+            <button mat-stroked-button color="accent" (click)="createContentControl()">Get Clause</button>
         </div>
         <div class="marginbottom20">
-
-        <mat-form-field class="full-width" color="accent">
-            <mat-label>Comment</mat-label>
-            <textarea matInput [(ngModel)]="taskData.userComment"  placeholder="Ex. It makes me feel..."></textarea>
-        </mat-form-field>
+            <mat-form-field class="full-width" color="accent">
+                <mat-label>Comment</mat-label>
+                <textarea matInput [(ngModel)]="taskData.userComment"  placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field>
         </div>
         <section class="marginbottom20">
             <mat-form-field class="full-width" color="accent">
@@ -27,21 +27,64 @@
                 </mat-select>
             </mat-form-field>
         </section>
-<!--        <section>-->
-<!--            <button (click)="goBack()" mat-button color="accent">Cancel</button>-->
-<!--            <button (click)="addTask()" mat-raised-button color="accent">Save</button>-->
-<!--        </section>-->
+        </ng-container >
+        <ng-container *ngIf="!isNewTask">
+            <div>
+                <section class="marginbottom20">
+                    <p class="summaryTitle">ID</p>
+                    <p class="summaryValue">{{taskData.id}}</p>
+                </section>
+                <section class="marginbottom20">
+                    <p class="summaryTitle">Clause</p>
+                    <p class="summaryValue">{{taskData.clause}}</p>
+                </section>
+                <section>
+                    <p class="summaryTitle">Assign</p>
+                    <p class="summaryValue">{{taskData.assign}}</p>
+                </section>
+                <section class="taskComment marginTop20" *ngIf="taskData.comment">
+                    <p class="boldFont">{{(taskData.comment.length > 1)?'Comments':'Comment'}}</p>
+                    <ng-container *ngFor="let comment of taskData.comment">
+                        <div class="commentUserInfo">
+                            <div style="display: flex;align-items: center">
+                                <div class="userInitIcon">{{getInitial(comment.name)}}</div>
+                                <div style="display: flex;align-items: center">
+                                    <p class="text14 colorDarkGrey boldFont">{{comment.name}}</p>
+                                    <!--                                                    <p class="text12 colorLightGrey">{{comment.email}}</p>-->
+                                </div>
+                            </div>
+                            <p style="margin: 10px 0">{{comment.message}}</p>
+                            <p class="colorLightGrey text12">{{comment.date | date: 'EE, dd-MMM-yyyy'}}</p>
+                        </div>
+                    </ng-container>
+                </section>
+                <div class="margin20">
+                    <mat-form-field class="full-width" color="accent">
+                        <mat-label>New Comment</mat-label>
+                        <textarea matInput [(ngModel)]="taskData.userComment"></textarea>
+                    </mat-form-field>
+                </div>
+                <section class="marginbottom20">
+                    <mat-form-field class="full-width" color="accent">
+                        <mat-label>Status</mat-label>
+                        <mat-select [(ngModel)]="taskData.status">
+                            <mat-option *ngFor="let status of taskStatus" [value]="status">
+                                {{status}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </section>
+            </div>
+        </ng-container>
     </section>
-<!--    <p [routerLink]="'/login'" class="logoutText">Logout</p>-->
 </div>
 <section class="padding10 fixedSectionBottom">
     <button (click)="goBack()" mat-button color="accent">Cancel</button>
     <ng-container *ngIf ="isNewTask">
-    <button  (click)="addTask()" mat-raised-button color="accent">Add Task</button>
+        <button  (click)="addTask()" mat-raised-button color="accent">Add Task</button>
     </ng-container>
     <ng-container *ngIf ="!isNewTask">
-
-    <button (click)="addTask()" mat-raised-button color="accent">Update Task</button>
+        <button (click)="addTask()" mat-raised-button color="accent">Update Task</button>
     </ng-container>
     <p class="marginTop20 logoutText" [routerLink]="'/login'">Logout</p>
 </section>
