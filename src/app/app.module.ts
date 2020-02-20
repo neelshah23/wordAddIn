@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'task/:id', component: TaskComponent },
-    { path: 'addTask/:id', component: AddTaskComponent }
+    { path: 'addTask/:id/:op', component: AddTaskComponent }
 ];
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, TaskComponent,AddTaskComponent],

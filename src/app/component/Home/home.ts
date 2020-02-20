@@ -24,11 +24,11 @@ const Home = require('./home.html');
             background-color: #efefef;
             display: flex;
             padding: 0 10px;
-            color: #2b579a;
+            color: #000000;
         }
 
         .searchWrapper input {
-            background-color: #EEF1F8;
+            background-color: #f7f7f7;
             color: #333;
             border-radius: 3px 0 0 3px;
             padding: 13px;
@@ -40,9 +40,9 @@ const Home = require('./home.html');
             margin: 0;
         }
         .requestStatus{
-            color: #2b579a;
+            color: #000000;
             border-radius: 20px;
-            border: 1px solid #2b579a;
+            border: 1px solid #000000;
             padding: 4px 10px;
             font-size: 12px;
         }

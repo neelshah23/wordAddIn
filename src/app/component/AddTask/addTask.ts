@@ -21,7 +21,8 @@ const Home = require('./addTask.html');
 export class AddTaskComponent {
     userDetails: any = {name: ''};
     requestID: string;
-    _myTeam: any;
+    taskData_update: any;
+    isNewTask: boolean;
     taskData = {
         "request_id": null,
         "clause": "task clause",
@@ -41,9 +42,23 @@ export class AddTaskComponent {
         this.getUserDetails();
         this.activeRoute.params.subscribe(data => {
             this.requestID = this.taskData.request_id = data.id;
+            this.isNewTask = (data.op === "1");
             this.getTeam();
         });
         this.requestData = JSON.parse(localStorage.getItem('_rd'));
+        const _td = localStorage.getItem('_td');
+        this.taskData_update = ( _td && _td !== 'null')?JSON.parse(_td): null;
+        if(this.taskData_update) {
+            this.taskData['id'] = this.taskData_update.id;
+            this.taskData.userComment = this.taskData_update.comment[this.taskData_update.comment.length - 1].message;
+            this.taskData.clause = this.taskData_update.clause;
+            this.taskData.comment = this.taskData_update.comment;
+            this.taskData.user_id = this.taskData_update.user_id;
+            this.taskData.content_control = this.taskData_update.content_control;
+            this.taskData.department = this.taskData_update.department;
+            this.taskData.request_id = this.taskData_update.request_id;
+            this.highlightContentControlById(this.taskData.content_control);
+        }
 
 
     }
@@ -76,22 +91,20 @@ export class AddTaskComponent {
         this.taskData.comment.push(_tempComment);
         delete this.taskData.userComment;
 
-        this.api.callPostApi(`https://letscontract.run/activity/v1/tasks`,this.taskData).subscribe((res:any) => {
-            console.log(res.data);
-            this.goBack();
-        });
+        if(this.isNewTask) {
+            this.api.callPostApi(`https://letscontract.run/activity/v1/tasks`, this.taskData).subscribe((res: any) => {
+                this.goBack();
+            });
+        } else {
+            this.api.callPutApi(`https://letscontract.run/activity/v1/tasks/${this.taskData['id']}`, this.taskData).subscribe((res: any) => {
+                this.goBack();
+            });
+        }
     }
     getTeam(){
         this.api.callGetApi(`https://letscontract.run/activity/v1/team/members/${this.requestID}/${this.userDetails.id}`).subscribe((res:any) => {
-            // this._myTeam = res.data.team_structure;
-            // this.departments = Object.keys(this._myTeam);
-            // this.taskData.department = this.departments[0];
-            console.log(res.data);
             this.myTeam = res.data;
         });
-    }
-    updateTeam(){
-        this.myTeam = this._myTeam[this.taskData.department];
     }
 
     /**
@@ -171,5 +184,35 @@ export class AddTaskComponent {
                 }
             });
 
+    }
+    updateUserDept(data){
+
+        for (let i = 0; i <  this.myTeam.length; i++){
+            const item = this.myTeam[i];
+            if(item.id === data.value){
+                this.taskData.department =  item.team;
+            }
+        }
+    }
+    highlightContentControlById (tag: any) {
+        Word.run( (context) => {
+            const myContentControlObj = context.document.contentControls.getByTag(tag);
+            context.load(myContentControlObj, 'id,text,font,tag');
+            return context.sync().then( () => {
+                for (let i = 0; i < myContentControlObj.items.length; i++) {
+                    const _temp = myContentControlObj.items[i];
+                    _temp.color="yellow";
+                    _temp.select();
+                }
+                return myContentControlObj;
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+
+                }
+            });
     }
 }

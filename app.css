@@ -148,7 +148,8 @@ app-home, app-login{
 app-login{
      height: 100vh;
     width: 100vw;
-    background: linear-gradient(180deg, #004387 0%, #161718 100%);
+    /*background: linear-gradient(180deg, #004387 0%, #161718 100%);*/
+    background: #000;
 
 }
 .full-width {
@@ -181,7 +182,7 @@ app-login .btn-ltscontract{
     min-width: 120px !important;
     border-radius: 6px !important;
     font-size: 15px  !important;
-    color: #2F4F91 !important;
+    color: #000 !important;
     cursor: pointer !important;
 }
 .center{
@@ -209,11 +210,11 @@ app-login .btn-ltscontract{
     background-color: #efefef;
     display: flex;
     padding: 0 10px;
-    color: #2b579a;
+    color: #000000;
 }
 
 .searchWrapper input {
-    background-color: #EEF1F8;
+    background-color: #f7f7f7;
     color: #333;
     border-radius: 3px 0 0 3px;
     padding: 13px;

@@ -20,7 +20,7 @@
         <section class="marginbottom20">
             <mat-form-field class="full-width" color="accent">
                 <mat-label>Assign</mat-label>
-                <mat-select [(ngModel)]="taskData.user_id">
+                <mat-select [(ngModel)]="taskData.user_id" (change)="updateUserDept($event)">
                     <mat-option *ngFor="let user of myTeam" [value]="user.id">
                         {{user.user_name.replace(',',' ') + ' - ' + user.type + ' - ' + user.team}}
                     </mat-option>
@@ -36,6 +36,12 @@
 </div>
 <section class="padding10 fixedSectionBottom">
     <button (click)="goBack()" mat-button color="accent">Cancel</button>
-    <button (click)="addTask()" mat-raised-button color="accent">Add Task</button>
+    <ng-container *ngIf ="isNewTask">
+    <button  (click)="addTask()" mat-raised-button color="accent">Add Task</button>
+    </ng-container>
+    <ng-container *ngIf ="!isNewTask">
+
+    <button (click)="addTask()" mat-raised-button color="accent">Update Task</button>
+    </ng-container>
     <p class="marginTop20 logoutText" [routerLink]="'/login'">Logout</p>
 </section>
